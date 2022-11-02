@@ -12,7 +12,7 @@
         public DateOnly Date { get => _date; set => _date = value; }
         public int CallsReceived { get => _callsReceived; set => _callsReceived = value; }
         public TimeSpan AverageHandleTime { get => _averageHandleTime; set => _averageHandleTime = value; }
-        public TimeSpan AverageWaitTime { get => _averageWaitTime; set => _averageWaitTime = value; }{
+        public TimeSpan AverageWaitTime { get => _averageWaitTime; set => _averageWaitTime = value; }
 
         public CallDailyTotals(int id, DateOnly date, int callsReceived, TimeSpan averageHandleTime, TimeSpan averageWaitTime)
         {
