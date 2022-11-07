@@ -1,6 +1,6 @@
-create procedure spEndCall
+alter procedure spEndCall
 	-- parameters
-	@callId int,
+    @phoneNumber varchar(10),
 	@statusEndId int,
 	@status int output
 as
@@ -20,7 +20,7 @@ begin
 	
 	-- validate
 	set @status = 0; -- no error
-	select @sessionId = idSession, @callStatus = idStatus from calls where id = @callId;
+	select @sessionId = idSession, @callStatus = idStatus from calls where phoneNumber = @phoneNumber;
 	if @@ROWCOUNT = 0
 	   set @status = 1; -- invalid call id
 	else begin
@@ -33,7 +33,7 @@ begin
 		--try
 		begin try
 			-- update call
-			update calls set dateTimeEnded = GETDATE(), idStatus = @callEndStatus, idStatusEnd = @statusEndId where id = @callId;
+			update calls set dateTimeEnded = GETDATE(), idStatus = @callEndStatus, idStatusEnd = @statusEndId where phoneNumber = @phoneNumber;
 			-- update session
 			update sessions set idCurrentCall = null where id = @sessionId;
 			-- update log (finish previous activity)
