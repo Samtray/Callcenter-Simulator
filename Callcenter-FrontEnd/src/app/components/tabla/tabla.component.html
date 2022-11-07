@@ -1,32 +1,35 @@
 <div class="table-wrapper">
-    <div class="card">
-        <h5 class="title-padding">Callcenter</h5>
-        <div class="mb-3">
-            <p-button type="button" icon="pi pi-chevron-left" (click)="prev()" [disabled]="isFirstPage()" styleClass="p-button-text"></p-button>
-            <p-button type="button" icon="pi pi-refresh" (click)="reset()" styleClass="p-button-text"></p-button>
-            <p-button type="button" icon="pi pi-chevron-right" (click)="next()" [disabled]="isLastPage()" styleClass="p-button-text"></p-button>
-        </div>
-        <p-table [value]="agents" [paginator]="true" [rows]="rows" [showCurrentPageReport]="true" [(first)]="first" responsiveLayout="scroll" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [rowsPerPageOptions]="[10,25,50]">
-            <ng-template pTemplate="header">
-                <tr>
-                    <th>ID</th>
-                    <th>Date of Login</th>
-                    <th>Agent ID</th>
-                    <th>Station ID</th>
-                    <th>Current Call ID</th>
-                    <th>Option</th>
-                </tr>
-            </ng-template>
-            <ng-template pTemplate="body" let-agent>
-                <tr>
-                    <td>{{agent.id}}</td>
-                    <td>{{agent.dateTimeLogin}}</td>
-                    <td>{{agent.idAgent}}</td>
-                    <td>{{agent.idStation}}</td>
-                    <td>{{agent.idCurrentCall}}</td>
-                    <td><button pButton type="button" class="p-button-info" (click)="logout(agent.idAgent)">Logout</button></td>
-                </tr>
-            </ng-template>
-        </p-table>
+<div class="card">
+    <h5 class="title-padding">Callcenter</h5>
+    <div class="mb-3">
+        <p-button type="button" icon="pi pi-chevron-left" (click)="prev()" [disabled]="isFirstPage()" styleClass="p-button-text"></p-button>
+        <p-button type="button" icon="pi pi-refresh" (click)="reset()" styleClass="p-button-text"></p-button>
+        <p-button type="button" icon="pi pi-chevron-right" (click)="next()" [disabled]="isLastPage()" styleClass="p-button-text"></p-button>
     </div>
+    <p-table [value]="agents" [paginator]="true" [rows]="rows" [showCurrentPageReport]="true" [(first)]="first" responsiveLayout="scroll"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [rowsPerPageOptions]="[10,25,50]">
+        <ng-template pTemplate="header">
+            <tr>
+                <th>ID</th>
+                <th>Date of Login</th>
+                <th>Date of Logout</th>
+                <th>Agent ID</th>
+                <th>Station ID</th>
+                <th>Current Call ID</th>
+                <th>Option</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-agent>
+            <tr>
+                <td>{{agent.id}}</td>
+                <td>{{agent.dateTimeLogin}}</td>
+                <td>{{agent.dateTimeLogout}}</td>
+                <td>{{agent.idAgent}}</td>
+                <td>{{agent.idStation}}</td>
+                <td>{{agent.idCurrentCall}}</td>
+                <td><button pButton type="button" class="p-button-info" (click)="test(agent.idAgent)">Logout</button></td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>
 </div>

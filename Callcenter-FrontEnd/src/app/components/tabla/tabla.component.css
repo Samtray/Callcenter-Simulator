@@ -1,11 +1,7 @@
-.table-wrapper {
-    padding: 20px;
+.table-wrapper{
+   padding: 50px;
 }
 
-.card {
-    width: 50%;
-}
-
-.title-padding {
-    padding: 20px;
+.title-padding{
+    padding:20px;
 }
