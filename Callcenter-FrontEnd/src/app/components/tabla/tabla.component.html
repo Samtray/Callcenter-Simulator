@@ -1,0 +1,32 @@
+<div class="card">
+
+    <p-table [value]="agents" [paginator]="true"  [(first)]="first" [rows]="10" [showCurrentPageReport]="true" responsiveLayout="scroll"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" >
+        <ng-template pTemplate="header">
+            <tr>
+                <th>ID</th>
+                <th>Date of Login</th>
+                <th>Date of Logout</th>
+                <th>Agent ID</th>
+                <th>Station ID</th>
+                <th>Current Call ID</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-agents>
+            <tr>
+                <td>{{agents.id}}</td>
+                <td>{{agents.dateTimeLogin}}</td>
+                <td>{{agents.dateTimeLogout}}</td>
+                <td>{{agents.idAgent}}</td>
+                <td>{{agents.idStation}}</td>
+                <td>{{agents.idCurrentCall}}</td>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="paginatorleft">
+            <p-button type="button" icon="pi pi-plus" styleClass="p-button-text"></p-button>
+        </ng-template>
+        <ng-template pTemplate="paginatorright">
+            <p-button type="button" icon="pi pi-cloud" styleClass="p-button-text"></p-button>
+        </ng-template>
+    </p-table>
+</div>
