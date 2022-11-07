@@ -28,5 +28,13 @@ public class StoredProcedures
             command.Parameters.AddWithValue("@statusEndId", statusEndId);
             return SqlServerConnection.ExecuteProcedure(command);
         }
+
+        public static int LogoutAgent(int agentId)
+        {
+            string statement = "spLogoutAgent";
+            SqlCommand command = new SqlCommand(statement);
+            command.Parameters.AddWithValue("@agentId", agentId);
+            return SqlServerConnection.ExecuteProcedure(command);
+        }
 }
 
