@@ -14,7 +14,7 @@ export class TablaComponent implements OnInit {
   agents: any[] = [];
   first = 0;
   rows = 10;
-
+  dateMessage = "Hasn't Logged Out";
   ngOnInit(): void {
     this.fetchData();
   }
@@ -24,6 +24,11 @@ export class TablaComponent implements OnInit {
       this.objetoAgentes = data;
       this.agents = this.objetoAgentes.sessions
       console.log(this.agents);
+      this.agents.forEach(obj =>{
+        if(obj.dateTimeLogout == "0001-01-01T00:00:00"){
+          obj.dateTimeLogout = this.dateMessage;
+        }
+      });
     });
   }
 
