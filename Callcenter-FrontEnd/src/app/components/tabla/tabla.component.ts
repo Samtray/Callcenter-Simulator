@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { APIService } from 'src/app/services/api.service';
+import { RefreshService } from 'src/app/services/refresh.service';
 @Component({
   selector: 'app-tabla',
   templateUrl: './tabla.component.html',
@@ -7,26 +9,26 @@ import { APIService } from 'src/app/services/api.service';
 })
 export class TablaComponent implements OnInit {
 
-  constructor(private APIService:APIService) { }
+  constructor(private api: APIService, private refresh: RefreshService) { }
 
-  objetoAgentes:any;
+  objetoAgentes: any = {};
   agents: any[] = [];
   first = 0;
   rows = 10;
-  dateMessage = "Hasn't Logged Out";
+  subscription1$!: Subscription
+
   ngOnInit(): void {
-    this.fetchData();
+    this.subscription1$ = this.refresh.selectedRefresh$.subscribe((value) => {
+      this.fetchData()
+    });
   }
 
   fetchData(){
-    this.APIService.getData().subscribe(data =>{
+
+
+    this.api.getData().subscribe(data =>{
       this.objetoAgentes = data;
       this.agents = this.objetoAgentes.sessions
-      this.agents.forEach(obj =>{
-        if(obj.dateTimeLogout == "0001-01-01T00:00:00"){
-          obj.dateTimeLogout = this.dateMessage;
-        }
-      });
     });
   }
 
@@ -50,9 +52,12 @@ export class TablaComponent implements OnInit {
     return this.agents ? this.first === 0 : true;
   }
 
-  test(agent:any){
-    console.log(agent);
-    //this.agents = [this.agents[0]];
+  logout(agentid: number){
+    this.api.postLogout(agentid).subscribe((result)=>{
+      console.log(result)
+      this.fetchData();
+    });
+
   }
 
 }
