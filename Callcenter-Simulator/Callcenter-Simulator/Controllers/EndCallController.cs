@@ -30,11 +30,11 @@ namespace Callcenter_Simulator.Controllers
             StoredProcedureResponse vm = new StoredProcedureResponse();
 
 
-            if (!string.IsNullOrEmpty(p.callid.ToString()) &&
+            if (!string.IsNullOrEmpty(p.phonenumber) &&
                 !string.IsNullOrEmpty(p.statusendid.ToString())
                 )
             {
-                vm.Status = StoredProcedures.EndCall(p.callid, p.statusendid);
+                vm.Status = StoredProcedures.EndCall(p.phonenumber, p.statusendid);
             }
             else
             {

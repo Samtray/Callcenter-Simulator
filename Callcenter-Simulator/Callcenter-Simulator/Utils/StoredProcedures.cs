@@ -20,11 +20,11 @@ public class StoredProcedures
             return SqlServerConnection.ExecuteProcedure(command);
         }
 
-        public static int EndCall(int callId, int statusEndId)
+        public static int EndCall(string phoneNumber, int statusEndId)
         {
             string statement = "spEndCall";
             SqlCommand command = new SqlCommand(statement);
-            command.Parameters.AddWithValue("@callId", callId);
+            command.Parameters.AddWithValue("@phoneNumer", phoneNumber);
             command.Parameters.AddWithValue("@statusEndId", statusEndId);
             return SqlServerConnection.ExecuteProcedure(command);
         }
