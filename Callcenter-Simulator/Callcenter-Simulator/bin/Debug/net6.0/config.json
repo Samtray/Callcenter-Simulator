@@ -1,6 +1,6 @@
 {
   "SqlServer": {
-    "ServerName": "SAMTRAY",
+    "ServerName": "DESKTOP-T1395SG",
     "Database": "callcenter2022",
     "User": "sa",
     "Password": "123"

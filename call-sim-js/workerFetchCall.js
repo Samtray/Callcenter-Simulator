@@ -1,3 +1,5 @@
+import {createCall} from './Services/CallControllService.mjs'
+
 onmessage = (e) =>{
 
     let currentTime = new Date();
@@ -5,7 +7,8 @@ onmessage = (e) =>{
     console.log("[Start Call] Sleeping " + Math.floor(Math.abs(e.data.startAt - currentTime.getTime())/1000) + " Seconds");
     setTimeout(()=>{
         // 3.3.2 fetch start call
-        console.log("Fetching start call")
+        createCall("https://localhost:7112", JSON.stringify(e.data.phoneNumber))
+        
     }, Math.floor(Math.abs(e.data.startAt - currentTime.getTime())));
     
     // 3.3.3 use Fetched data as needed

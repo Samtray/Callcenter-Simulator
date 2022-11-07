@@ -15,14 +15,15 @@ let currentDate = new Date();
 console.log("Current hour" + currentDate.getHours())
 console.log("Current time in milis" + currentDate.getTime())
 console.log("Array of calls per hour \n" + callsPerHour);
-console.log(callsPerHour[currentDate.getHours()])
+console.log("Calls in hour" + currentDate.getHours() +": " + callsPerHour[currentDate.getHours()])
 
 // 3. Create function interval of 1 hr
 setInterval(function(){
     // Main Interval
     
     //3.1 Create new set of calls based on current number of hourly calls
-    for (let i = 0; i < callsPerHour[currentDate.getHours()]; i++) {
+     
+    for (let i = 0; i < callsPerHour[new Date().getHours()]; i++) {
 
         //Current time in millis
         let currentTime = currentDate.getTime();
@@ -35,6 +36,9 @@ setInterval(function(){
 
         //create worker
         let worker = new Worker("./workerFetchCall.js");
+        
+        console.log(calls);
+        
         worker.postMessage(calls);
         worker.onmessage = (e) =>{
             console.log(e);
@@ -49,16 +53,16 @@ setInterval(function(){
             // sleep worker until (hangAt - currentTime) [difference in time] in millis
             // fetch hang call from callID
             // kill worker
-
         
         //console.log(calls);
         //console.log("Duration " + Math.floor((hangAt - startAt)/1000) + " Seconds");
     }
-}, 1000 * 60 * 60);
+}, 1000 * 15);
 
 
 
 function Calls(startAt, hangAt){
+    this.phoneNumber = Math.random().toString().slice(2,11)
     this.startAt = startAt; 
     this.hangAt = hangAt;
 }
