@@ -1,10 +1,9 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { APIService } from 'src/app/services/api.service';
 @Component({
   selector: 'app-tabla',
   templateUrl: './tabla.component.html',
   styleUrls: ['./tabla.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TablaComponent implements OnInit {
 
@@ -16,9 +15,7 @@ export class TablaComponent implements OnInit {
   rows = 10;
   dateMessage = "Hasn't Logged Out";
   ngOnInit(): void {
-    setTimeout(() =>{
-      this.fetchData();
-    }, 1000)
+    this.fetchData();
   }
 
   fetchData(){
@@ -53,8 +50,9 @@ export class TablaComponent implements OnInit {
     return this.agents ? this.first === 0 : true;
   }
 
-  test(){
-    this.agents = [this.agents[0]];
+  test(agent:any){
+    console.log(agent);
+    //this.agents = [this.agents[0]];
   }
 
 }

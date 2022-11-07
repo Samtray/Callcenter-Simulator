@@ -16,6 +16,7 @@
                 <th>Agent ID</th>
                 <th>Station ID</th>
                 <th>Current Call ID</th>
+                <th>Option</th>
             </tr>
         </ng-template>
         <ng-template pTemplate="body" let-agent>
@@ -26,10 +27,9 @@
                 <td>{{agent.idAgent}}</td>
                 <td>{{agent.idStation}}</td>
                 <td>{{agent.idCurrentCall}}</td>
+                <td><button pButton type="button" class="p-button-info" (click)="test(agent.idAgent)">Logout</button></td>
             </tr>
         </ng-template>
     </p-table>
 </div>
 </div>
-
-<button pButton type="button" class="p-button-info" (click)="test()" ></button>
