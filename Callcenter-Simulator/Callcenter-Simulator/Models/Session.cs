@@ -1,6 +1,10 @@
 ﻿
-    public class Session
-    {
+using System.Data.SqlClient;
+
+public class Session
+{
+        private static string select = "select * from sessions where active = 1";
+
         private int _id;
         private DateTime _dateTimeLogin;
         private DateTime _dateTimeLogout;
@@ -38,6 +42,12 @@
             IdStation = 0;
             IdCurrentCall = 0;
             Active = false;
+        }
+
+        public static List<Session> GetAll()
+        {
+            SqlCommand command = new SqlCommand(select + " order by dateTimeLogin");
+            return SessionMapper.ToList(SqlServerConnection.ExecuteQuery(command));
         }
 
 }
