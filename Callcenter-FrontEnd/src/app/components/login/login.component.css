@@ -1,0 +1,22 @@
+.panel-wrapper {
+    padding: 20px;
+}
+
+.display {
+    display: flex;
+}
+
+.field {
+    margin: 0 10px;
+}
+
+.button-width {
+    width: fit-content;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    appearance: none;
+    margin: 0;
+}
