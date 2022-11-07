@@ -16,14 +16,15 @@ export class TablaComponent implements OnInit {
   rows = 10;
   dateMessage = "Hasn't Logged Out";
   ngOnInit(): void {
-    this.fetchData();
+    setTimeout(() =>{
+      this.fetchData();
+    }, 1000)
   }
 
   fetchData(){
     this.APIService.getData().subscribe(data =>{
       this.objetoAgentes = data;
       this.agents = this.objetoAgentes.sessions
-      console.log(this.agents);
       this.agents.forEach(obj =>{
         if(obj.dateTimeLogout == "0001-01-01T00:00:00"){
           obj.dateTimeLogout = this.dateMessage;
@@ -50,6 +51,10 @@ export class TablaComponent implements OnInit {
 
   isFirstPage(): boolean {
     return this.agents ? this.first === 0 : true;
+  }
+
+  test(){
+    this.agents = [this.agents[0]];
   }
 
 }
