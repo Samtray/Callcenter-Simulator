@@ -28,7 +28,7 @@ addEventListener("message", (e) => {
 
     //3.3.4 sleep until (hangAt - startAt) milis
     console.log("[Hang Call] Sleeping " + Math.floor(Math.abs(e.data.hangAt - e.data.startAt) / 1000) + " Seconds");
-    set(function () {
+    setInterval(function () {
         //3.3.5 fetch hang call of call ID from last fetch
         console.log("Fetching hang call")
         fetch("https://localhost:7112/api/EndCall",

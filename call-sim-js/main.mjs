@@ -62,7 +62,7 @@ function generateCallData(callsPerHour) {
         let calls = new Calls(startAt, hangAt)
 
         //create worker
-        let worker = new Worker("workerFetchCall.mjs", { type: "module" });
+        let worker = new Worker("workerFetchCall.js");
 
         //console.log(calls);
 
