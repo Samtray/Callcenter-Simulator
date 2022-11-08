@@ -1,0 +1,36 @@
+<div class="table-wrapper">
+    <div class="card">
+        <h5 class="title-padding">Calls</h5>
+        <div class="mb-3">
+            <p-button type="button" icon="pi pi-chevron-left" (click)="prev()" [disabled]="isFirstPage()" styleClass="p-button-text"></p-button>
+            <p-button type="button" icon="pi pi-refresh" (click)="reset()" styleClass="p-button-text"></p-button>
+            <p-button type="button" icon="pi pi-chevron-right" (click)="next()" [disabled]="isLastPage()" styleClass="p-button-text"></p-button>
+        </div>
+        <p-table [value]="calls" [paginator]="true" [rows]="rows" [showCurrentPageReport]="true" [(first)]="first" responsiveLayout="scroll" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [rowsPerPageOptions]="[5,25,50]">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th>ID</th>
+                    <th>Received On</th>
+                    <th>Answered On</th>
+                    <th>Ended ON</th>
+                    <th>Phone Number</th>
+                    <th>Session ID</th>
+                    <th>Status ID</th>
+                    <th>Status End</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-call>
+                <tr>
+                    <td>{{call.id}}</td>
+                    <td>{{call.datetimeReceived}}</td>
+                    <td>{{call.datetimeAnswered}}</td>
+                    <td>{{call.datetimeEnded}}</td>
+                    <td>{{call.phoneNumber}}</td>
+                    <td>{{call.idSession}}</td>
+                    <td>{{call.idStatus}}</td>
+                    <td>{{call.idStatusEnd}}</td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+</div>
