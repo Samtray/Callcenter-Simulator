@@ -14,7 +14,7 @@ export class TablaComponent implements OnInit {
   objetoAgentes: any = {};
   agents: any[] = [];
   first = 0;
-  rows = 10;
+  rows = 5;
   subscription1$!: Subscription
 
   ngOnInit(): void {
@@ -26,7 +26,7 @@ export class TablaComponent implements OnInit {
   fetchData(){
 
 
-    this.api.getData().subscribe(data =>{
+    this.api.getAgents().subscribe(data =>{
       this.objetoAgentes = data;
       this.agents = this.objetoAgentes.sessions
     });

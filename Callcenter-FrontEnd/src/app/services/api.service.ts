@@ -11,8 +11,12 @@ export class APIService {
 
   readonly apiURL = 'https://localhost:7112/api/';
 
-  getData(): Observable<any>{
+  getAgents(): Observable<any>{
     return this.http.get(this.apiURL + 'Sessions');
+  }
+
+  getCalls(): Observable<any>{
+    return this.http.get(this.apiURL + 'Calls');
   }
 
   postLogout(agentid: number): Observable<any>{
