@@ -18,8 +18,8 @@ console.log("Array of calls per hour \n" + callsPerHour);
 console.log("Calls in hour" + currentDate.getHours() + ": " + callsPerHour[currentDate.getHours()])
 
 generateCallData(callsPerHour[new Date().getHours()])
-// 3. Create function interval of 1 hr
-setInterval(function () {
+    // 3. Create function interval of 1 hr
+setInterval(function() {
     // Main Interval
     //3.1 Create new set of calls based on current number of hourly calls
 
@@ -45,10 +45,12 @@ setInterval(function () {
 
 
 
-function Calls(startAt, hangAt) {
-    this.phoneNumber = Math.random().toString().slice(2, 11)
-    this.startAt = startAt;
-    this.hangAt = hangAt;
+class Calls {
+    constructor(startAt, hangAt) {
+        this.phoneNumber = Math.random().toString().slice(2, 11);
+        this.startAt = startAt;
+        this.hangAt = hangAt;
+    }
 }
 
 function generateCallData(callsPerHour) {
@@ -58,7 +60,7 @@ function generateCallData(callsPerHour) {
         let startAt = currentTime + Math.floor(1000 * 60 * 15 * Math.random());
         // Create an arbitrary hang time (always later than startAt)
         let hangAt = startAt + Math.floor(1000 * 60 * 15 * Math.random())
-        // create call instance
+            // create call instance
         let calls = new Calls(startAt, hangAt)
 
         //create worker

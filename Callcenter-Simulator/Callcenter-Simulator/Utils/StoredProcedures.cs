@@ -24,7 +24,7 @@ public class StoredProcedures
         {
             string statement = "spEndCall";
             SqlCommand command = new SqlCommand(statement);
-            command.Parameters.AddWithValue("@phoneNumer", phoneNumber);
+            command.Parameters.AddWithValue("@phoneNumber", phoneNumber);
             command.Parameters.AddWithValue("@statusEndId", statusEndId);
             return SqlServerConnection.ExecuteProcedure(command);
         }

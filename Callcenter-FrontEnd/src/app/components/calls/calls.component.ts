@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { interval, takeWhile } from 'rxjs';
 import { APIService } from 'src/app/services/api.service';
 
 @Component({
@@ -7,7 +8,7 @@ import { APIService } from 'src/app/services/api.service';
   styleUrls: ['./calls.component.css']
 })
 export class CallsComponent implements OnInit {
-
+  buttonFlag: boolean = false;
   objectCalls: any = {};
   calls: any[] = [];
   first = 0;
@@ -22,9 +23,17 @@ export class CallsComponent implements OnInit {
 
   fetchData(){
     this.api.getCalls().subscribe(data =>{
-      console.log(data)
       this.objectCalls = data;
       this.calls = this.objectCalls.calls
+    });
+  }
+
+  refreshEveryHalfSecond(status: boolean){
+    this.buttonFlag = status
+    interval(500)
+    .pipe(takeWhile(() => this.buttonFlag))
+    .subscribe(() => {
+      this.fetchData()
     });
   }
 

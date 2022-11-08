@@ -13,13 +13,15 @@ import { ButtonModule } from 'primeng/button';
 import { PanelModule } from 'primeng/panel';
 import { InputTextModule } from 'primeng/inputtext';
 import { CallsComponent } from './components/calls/calls.component';
+import { SimulatorComponent } from './components/simulator/simulator.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TablaComponent,
     LoginComponent,
-    CallsComponent
+    CallsComponent,
+    SimulatorComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +39,8 @@ import { CallsComponent } from './components/calls/calls.component';
   exports: [
     TablaComponent,
     LoginComponent,
-    CallsComponent
+    CallsComponent,
+    SimulatorComponent
   ]
 })
 export class AppModule { }

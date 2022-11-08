@@ -24,13 +24,13 @@ export class TablaComponent implements OnInit {
   }
 
   fetchData(){
-
-
     this.api.getAgents().subscribe(data =>{
       this.objetoAgentes = data;
       this.agents = this.objetoAgentes.sessions
     });
   }
+
+
 
   next() {
     this.first = this.first + this.rows;
