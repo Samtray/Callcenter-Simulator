@@ -5,6 +5,9 @@
             <p-button type="button" icon="pi pi-chevron-left" (click)="prev()" [disabled]="isFirstPage()" styleClass="p-button-text"></p-button>
             <p-button type="button" icon="pi pi-refresh" (click)="reset()" styleClass="p-button-text"></p-button>
             <p-button type="button" icon="pi pi-chevron-right" (click)="next()" [disabled]="isLastPage()" styleClass="p-button-text"></p-button>
+            <button *ngIf="!buttonFlag" pButton type="button" class="p-button-info" (click)="refreshEveryHalfSecond(true)"> Start Live Data</button>
+            <button *ngIf="buttonFlag" pButton type="button" class="p-button-info" (click)="refreshEveryHalfSecond(false)"> Stop Live Data</button>
+
         </div>
         <p-table [value]="agents" [paginator]="true" [rows]="rows" [showCurrentPageReport]="true" [(first)]="first" responsiveLayout="scroll" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [rowsPerPageOptions]="[5,25,50]">
             <ng-template pTemplate="header">

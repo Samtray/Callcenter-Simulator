@@ -48,7 +48,7 @@ setInterval(function() {
 
     //console.log(calls);
     //console.log("Duration " + Math.floor((hangAt - startAt)/1000) + " Seconds");
-}, 1000 * 60 * 30);
+}, 1000 * 60);
   }
 
 

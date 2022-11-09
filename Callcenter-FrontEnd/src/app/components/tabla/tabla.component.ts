@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { interval, Subscription, takeWhile } from 'rxjs';
 import { APIService } from 'src/app/services/api.service';
 import { RefreshService } from 'src/app/services/refresh.service';
 @Component({
@@ -11,6 +11,7 @@ export class TablaComponent implements OnInit {
 
   constructor(private api: APIService, private refresh: RefreshService) { }
 
+  buttonFlag: boolean = false;
   objetoAgentes: any = {};
   agents: any[] = [];
   first = 0;
@@ -30,9 +31,16 @@ export class TablaComponent implements OnInit {
     });
   }
 
+  refreshEveryHalfSecond(status: boolean){
+    this.buttonFlag = status
+    interval(500)
+    .pipe(takeWhile(() => this.buttonFlag))
+    .subscribe(() => {
+      this.fetchData()
+    });
+  }
 
-
-  next() {
+  next(): void {
     this.first = this.first + this.rows;
   }
 
