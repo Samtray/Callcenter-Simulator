@@ -58,8 +58,8 @@ class Calls {
   phoneNumber: string;
   startAt: any;
   hangAt: any;
-  constructor(startAt: any, hangAt: any) {
-      this.phoneNumber = Math.random().toString().slice(2, 11);
+  constructor(phoneNumber:any, startAt: any, hangAt: any) {
+      this.phoneNumber = phoneNumber   //Math.random().toString().slice(2, 11);
       this.startAt = startAt;
       this.hangAt = hangAt;
   }
@@ -72,8 +72,8 @@ function generateCallData(callsPerHour: number) {
       let startAt = currentTime + Math.floor(1000 * 60 * 15 * Math.random());
       // Create an arbitrary hang time (always later than startAt)
       let hangAt = startAt + Math.floor(1000 * 60 * 15 * Math.random())
-          // create call instance
-      let calls = new Calls(startAt, hangAt)
+      // create call instance
+      let calls = new Calls(Math.random().toString().slice(2, 11),startAt, hangAt)
 
       //create worker
 

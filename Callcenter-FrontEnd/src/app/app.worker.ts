@@ -9,7 +9,7 @@ addEventListener('message', ({ data }) => {
   let fd = new FormData();
   fd.append("phonenumber", data.phoneNumber);
 
-  setInterval(function () {
+  const interval = setInterval(function () {
       // 3.3.2 fetch start call
       console.log("fetching start call");
 
@@ -20,6 +20,10 @@ addEventListener('message', ({ data }) => {
       }).catch((error) => {
           console.log(error)
       });
+
+
+      //clear interval before exiting
+      clearInterval(interval);
 
   }, Math.floor(Math.abs(data.startAt - currentTime.getTime())));
 
@@ -41,6 +45,9 @@ addEventListener('message', ({ data }) => {
       }).catch((error) => {
           console.log(error)
       });
+
+      //clear interval before exiting
+      clearInterval(interval);
   }, Math.floor(Math.abs(data.hangAt - currentTime.getTime())));
 
   postMessage("Message received");
